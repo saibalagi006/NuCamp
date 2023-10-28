@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Guessing Game</title>
+</head>
+<body>
+    <h1>Color Guessing Game</h1>
+    <button type="button" onClick= "runGame()">Start Game</button>
+    <script>
+        const COLORS_ARRAY = ['blue', 'cyan', 'gold', 'gray', 'green', 'magenta', 'orange', 'red', 'white', 'yellow'];
+        let COLORS_ARRAY_SPACE = COLORS_ARRAY.sort().join(", ");
+        function runGame(){
+            let numTries  = 0;
+            let guess = '';
+            let correct = false;
+            const targetIndex = Math.floor(Math.random()*COLORS_ARRAY.length);
+            const target = COLORS_ARRAY[targetIndex];
+            console.log('target is', target);
+            console.log('targetIndex is',targetIndex);
+            do{
+                guess = prompt('I am thinking of one of these colors:\n\n' + COLORS_ARRAY_SPACE +
+                                    '\n\nWhat color am I thinking of?\n');
+                if(guess===null){
+                    alert('The player has cancelled. The Game ends! ');
+                    return;
+                }
+                correct = checkGuess(guess,target);
+                console.log('value of correct is',correct);
+                numTries+=1;
+            }while(!correct)
+            document.body.style.background = guess.toLowerCase();
+            alert('You have successfully guessed it! The number of guesses it took is' + numTries);
+            
+        }
+        function checkGuess (guess,target){
+            let correct = false;
+            if(!COLORS_ARRAY.includes(guess.toLowerCase())){
+                alert("Enter a valid color name");
+            }
+            else if((guess.toLowerCase())>target){
+                alert('The color guessed is higher than the target ');
+            }
+            else if((guess.toLowerCase())<target){
+                alert('The color guessed is lower than the target ');
+                                
+            }
+            else{
+                correct = true;
+            }
+            return correct;
+        }
+    </script>
+</body>
+</html>

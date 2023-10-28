@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    let isCorrect = false;
+    let numberToGuess = 5;
+    do{
+        let userInput = prompt("Guess a number I am thinking of!");
+        if(userInput===numberToGuess){
+            isCorrect=true;
+            alert("You guessed correctly!");
+        }
+    }while(isCorrect===false)
+</script>    
+</body>
+
+</html>
+
